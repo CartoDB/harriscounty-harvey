@@ -1,0 +1,32 @@
+{
+    "builders": [
+        {
+            "type": "amazon-ebs",
+            "region": "us-east-1",
+            "source_ami": "ami-d61027ad",
+            "instance_type": "c4.xlarge",
+            "ssh_username": "ec2-user",
+            "ami_name": "HarrisCounty ({{timestamp}})",
+            "ami_block_device_mappings": [
+                {
+                    "device_name": "/dev/sdb",
+                    "virtual_name": "ephemeral0"
+                }
+            ],
+            "tags": {
+                "Name": "HarrisCounty"
+            },
+            "associate_public_ip_address": true
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": [
+                "sleep 5",
+                "sudo stop ecs",
+                "sudo rm -rf /var/lib/ecs/data/ecs_agent_data.json"
+            ]
+        }
+    ]
+}
