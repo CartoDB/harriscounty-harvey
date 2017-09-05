@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+<link rel="stylesheet" href="leaflet.css" />
+<script src="leaflet.js"></script>
+<style type="text/css">
+body, #map {
+  height: 100%;
+}
+</style>
+</head>
+<body>
+<div id="map">
+</div>
+<script type="text/javascript">
+  var esaAttribution =  "Imagery © ESA 2017";
+  var dgAttribution =  "Imagery © 2017 Digital Globe";
+
+ //create the tile layers
+  var sarAug30 = new L.tileLayer("https://tiles.rasterfoundry.com/tiles/05c0e116-fa43-493b-973d-4a1a21a2288f/{z}/{x}/{y}/?tag=1504625150724&mapToken=c8983d72-8d72-4258-851a-f91cfce122d5", {maxNativeZoom: 19, maxZoom: 19, attribution: esaAttribution});
+  var dfPreEvent = new L.tileLayer("https://tiles.rasterfoundry.com/tiles/fdf99af2-0bc7-4027-a5bc-8ff4916eea4a/{z}/{x}/{y}/?mapToken=ab547843-1809-4902-9516-51da3781c123", {maxNativeZoom: 19, maxZoom: 19, attribution: dgAttribution});
+  var dfPostEvent = new L.tileLayer("https://tiles.rasterfoundry.com/tiles/7ddcb831-1384-42b6-956c-90a389ddf6ea/{z}/{x}/{y}/?mapToken=e7d52751-bfaa-4ad8-af5a-a4ac53c554c2", {maxNativeZoom: 19, maxZoom: 19, attribution: dgAttribution});
+  var base = new L.tileLayer("http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png");
+
+  //link leaflet map with html
+  var map = L.map('map', { maxZoom: 19 });
+  map.setView([29.692067, -95.383277], 12);
+
+ //create an overlay object
+  var overlayMaps = {
+    "Sentenal SAR: August 30th": sarAug30,
+    "Digital Globe: Pre-event": dfPreEvent,
+    "Digital Globe: Post-event (August 30th and 31st)": dfPostEvent,
+  };
+  //add the layers to the map
+  L.control.layers(overlayMaps, {}, {collapsed: false}).addTo(map);
+  base.addTo(map);
+  overlayMaps.NDVI.addTo(map);
+</script>
+</body>
+</html>
