@@ -17,7 +17,12 @@ body, #map {
   var dgAttribution =  "Imagery © 2017 Digital Globe";
 
  //create the tile layers
-  var sarAug30 = new L.tileLayer("https://tiles.rasterfoundry.com/tiles/05c0e116-fa43-493b-973d-4a1a21a2288f/{z}/{x}/{y}/?tag=1504625150724&mapToken=c8983d72-8d72-4258-851a-f91cfce122d5", {maxNativeZoom: 19, maxZoom: 19, attribution: esaAttribution});
+ var sarAug30 = new L.tileLayer("https://tiles.rasterfoundry.com/tiles/05c0e116-fa43-493b-973d-4a1a21a2288f/{z}/{x}/{y}/?tag=1504625150724&mapToken=c8983d72-8d72-4258-851a-f91cfce122d5", {maxNativeZoom: 19, maxZoom: 19, attribution: esaAttribution});
+
+ var sarSept03 = new L.tileLayer("https://tiles.rasterfoundry.com/tiles/249f6eb2-9634-493b-aa5f-7e3fced70b03/{z}/{x}/{y}/?tag=1504713665083&mapToken=a9317dd0-eef0-4432-b2a7-521bef03c743", {maxNativeZoom: 19, maxZoom: 19, attribution: esaAttribution});
+
+ var sarSept05 = new L.tileLayer("https://tiles.rasterfoundry.com/tiles/aecfda7f-ee81-4577-9ac6-264b172e273e/{z}/{x}/{y}/?tag=1504713579506&mapToken=1552c163-9256-4ee2-bd0c-cec737daccb4", {maxNativeZoom: 19, maxZoom: 19, attribution: esaAttribution});
+
   var dfPreEvent = new L.tileLayer("https://tiles.rasterfoundry.com/tiles/fdf99af2-0bc7-4027-a5bc-8ff4916eea4a/{z}/{x}/{y}/?mapToken=ab547843-1809-4902-9516-51da3781c123", {maxNativeZoom: 19, maxZoom: 19, attribution: dgAttribution});
   var dfPostEvent = new L.tileLayer("https://tiles.rasterfoundry.com/tiles/7ddcb831-1384-42b6-956c-90a389ddf6ea/{z}/{x}/{y}/?mapToken=e7d52751-bfaa-4ad8-af5a-a4ac53c554c2", {maxNativeZoom: 19, maxZoom: 19, attribution: dgAttribution});
   var base = new L.tileLayer("http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png");
@@ -28,7 +33,9 @@ body, #map {
 
  //create an overlay object
   var overlayMaps = {
-    "Sentinel SAR: August 30th": sarAug30,
+      "Sentinel SAR: August 30th": sarAug30,
+      "Sentinel SAR: September 3rd": sarSept03,
+      "Sentinel SAR: September 5th": sarSept05,
     "Digital Globe: Pre-event": dfPreEvent,
     "Digital Globe: Post-event (August 30th and 31st)": dfPostEvent,
   };
