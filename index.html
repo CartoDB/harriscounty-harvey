@@ -24,7 +24,9 @@ body, #map {
  var sarSept05 = new L.tileLayer("https://tiles.rasterfoundry.com/tiles/aecfda7f-ee81-4577-9ac6-264b172e273e/{z}/{x}/{y}/?tag=1504713579506&mapToken=1552c163-9256-4ee2-bd0c-cec737daccb4", {maxNativeZoom: 19, maxZoom: 19, attribution: esaAttribution});
 
   var dfPreEvent = new L.tileLayer("https://tiles.rasterfoundry.com/tiles/fdf99af2-0bc7-4027-a5bc-8ff4916eea4a/{z}/{x}/{y}/?mapToken=ab547843-1809-4902-9516-51da3781c123", {maxNativeZoom: 19, maxZoom: 19, attribution: dgAttribution});
-  var dfPostEvent = new L.tileLayer("https://tiles.rasterfoundry.com/tiles/7ddcb831-1384-42b6-956c-90a389ddf6ea/{z}/{x}/{y}/?mapToken=e7d52751-bfaa-4ad8-af5a-a4ac53c554c2", {maxNativeZoom: 19, maxZoom: 19, attribution: dgAttribution});
+ var dfPostEvent = new L.tileLayer("https://tiles.rasterfoundry.com/tiles/7ddcb831-1384-42b6-956c-90a389ddf6ea/{z}/{x}/{y}/?mapToken=e7d52751-bfaa-4ad8-af5a-a4ac53c554c2", {maxNativeZoom: 19, maxZoom: 19, attribution: dgAttribution});
+
+ var floodMap = new L.tileLayer("https://tiles.rasterfoundry.com/tiles/f8e439de-b2a0-4024-8919-49e68a57248f/{z}/{x}/{y}/?tag=1504822056926&mapToken=b85f2168-1a0a-495c-bada-a077776b7bb5", {maxNativeZoom: 19, maxZoom: 19, attribution: "Data © Dartmouth Flood Observatory"});
   var base = new L.tileLayer("http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png");
 
   //link leaflet map with html
@@ -36,8 +38,9 @@ body, #map {
       "Sentinel SAR: August 30th": sarAug30,
       "Sentinel SAR: September 3rd": sarSept03,
       "Sentinel SAR: September 5th": sarSept05,
-    "Digital Globe: Pre-event": dfPreEvent,
-    "Digital Globe: Post-event (August 30th and 31st)": dfPostEvent,
+      "Digital Globe: Pre-event": dfPreEvent,
+      "Digital Globe: Post-event (August 30th and 31st)": dfPostEvent,
+      "Dartmouth Flood Observatory: Maximum Observed Flooding": floodMap
   };
   //add the layers to the map
   L.control.layers(overlayMaps, {}, {collapsed: false}).addTo(map);
